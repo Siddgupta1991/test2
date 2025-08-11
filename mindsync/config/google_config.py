@@ -30,12 +30,21 @@ def get_google_credentials():
     """
     try:
         # Try to get from Streamlit secrets first
-        if hasattr(st, 'secrets') and 'google' in st.secrets:
-            return {
-                "client_id": st.secrets.google.client_id,
-                "client_secret": st.secrets.google.client_secret,
-                "api_key": st.secrets.google.api_key
-            }
+        if hasattr(st, 'secrets'):
+            # Check for google_oauth section (Streamlit Cloud)
+            if 'google_oauth' in st.secrets:
+                return {
+                    "client_id": st.secrets.google_oauth.client_id,
+                    "client_secret": st.secrets.google_oauth.client_secret,
+                    "api_key": st.secrets.google_oauth.get("api_key", "")
+                }
+            # Check for google section (local development)
+            elif 'google' in st.secrets:
+                return {
+                    "client_id": st.secrets.google.client_id,
+                    "client_secret": st.secrets.google.client_secret,
+                    "api_key": st.secrets.google.api_key
+                }
         
         # Fallback to environment variables
         return {
@@ -80,4 +89,5 @@ SUCCESS_MESSAGES = {
     "auth_success": "✅ Successfully authenticated with Google!",
     "calendar_loaded": "📅 Calendar data loaded successfully!",
     "sync_complete": "🔄 Calendar sync completed!"
+
 }
