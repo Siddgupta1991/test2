@@ -1,0 +1,239 @@
+{
+  "kind": "calendar#events",
+  "etag": "\"sample_etag_value\"",
+  "summary": "john.doe@gmail.com",
+  "updated": "2024-01-15T12:00:00.000Z",
+  "timeZone": "America/New_York",
+  "items": [
+    {
+      "kind": "calendar#event",
+      "etag": "\"event_etag_1\"",
+      "id": "google_event_1",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=example1",
+      "created": "2024-01-14T10:00:00.000Z",
+      "updated": "2024-01-14T10:00:00.000Z",
+      "summary": "Team Standup - Google Calendar",
+      "description": "Daily standup meeting via Google Calendar integration",
+      "location": "Google Meet",
+      "creator": {
+        "email": "team.lead@company.com",
+        "displayName": "Team Lead"
+      },
+      "organizer": {
+        "email": "team.lead@company.com",
+        "displayName": "Team Lead"
+      },
+      "start": {
+        "dateTime": "2024-01-15T09:00:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "end": {
+        "dateTime": "2024-01-15T09:30:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "attendees": [
+        {
+          "email": "alice@company.com",
+          "displayName": "Alice Smith",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "bob@company.com",
+          "displayName": "Bob Johnson",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "charlie@company.com",
+          "displayName": "Charlie Brown",
+          "responseStatus": "tentative"
+        },
+        {
+          "email": "diana@company.com",
+          "displayName": "Diana Prince",
+          "responseStatus": "accepted"
+        }
+      ],
+      "conferenceData": {
+        "createRequest": {
+          "requestId": "sample_request_1"
+        },
+        "entryPoints": [
+          {
+            "entryPointType": "video",
+            "uri": "https://meet.google.com/abc-defg-hij"
+          }
+        ]
+      },
+      "reminders": {
+        "useDefault": false,
+        "overrides": [
+          {
+            "method": "popup",
+            "minutes": 10
+          }
+        ]
+      }
+    },
+    {
+      "kind": "calendar#event",
+      "etag": "\"event_etag_2\"",
+      "id": "google_event_2",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=example2",
+      "created": "2024-01-14T11:00:00.000Z",
+      "updated": "2024-01-14T11:00:00.000Z",
+      "summary": "Product Planning Session",
+      "description": "Q2 product roadmap planning and feature prioritization",
+      "location": "Conference Room Alpha",
+      "creator": {
+        "email": "product.manager@company.com",
+        "displayName": "Product Manager"
+      },
+      "organizer": {
+        "email": "product.manager@company.com",
+        "displayName": "Product Manager"
+      },
+      "start": {
+        "dateTime": "2024-01-15T10:00:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "end": {
+        "dateTime": "2024-01-15T12:00:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "attendees": [
+        {
+          "email": "design.lead@company.com",
+          "displayName": "Design Lead",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "tech.lead@company.com",
+          "displayName": "Tech Lead",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "marketing@company.com",
+          "displayName": "Marketing Manager",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "sales@company.com",
+          "displayName": "Sales Director",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ceo@company.com",
+          "displayName": "CEO",
+          "responseStatus": "tentative"
+        }
+      ]
+    },
+    {
+      "kind": "calendar#event",
+      "etag": "\"event_etag_3\"",
+      "id": "google_event_3",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=example3",
+      "created": "2024-01-14T12:00:00.000Z",
+      "updated": "2024-01-14T12:00:00.000Z",
+      "summary": "Lunch Break",
+      "description": "Time for lunch and recharge",
+      "start": {
+        "dateTime": "2024-01-15T12:30:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "end": {
+        "dateTime": "2024-01-15T13:30:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "transparency": "transparent"
+    },
+    {
+      "kind": "calendar#event",
+      "etag": "\"event_etag_4\"",
+      "id": "google_event_4",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=example4",
+      "created": "2024-01-14T13:00:00.000Z",
+      "updated": "2024-01-14T13:00:00.000Z",
+      "summary": "Client Demo Preparation",
+      "description": "Prepare demo materials for tomorrow's client presentation",
+      "location": "Design Studio",
+      "creator": {
+        "email": "me@company.com",
+        "displayName": "Me"
+      },
+      "organizer": {
+        "email": "me@company.com",
+        "displayName": "Me"
+      },
+      "start": {
+        "dateTime": "2024-01-15T14:00:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "end": {
+        "dateTime": "2024-01-15T16:00:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "attendees": [
+        {
+          "email": "design.lead@company.com",
+          "displayName": "Design Lead",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "marketing@company.com",
+          "displayName": "Marketing Manager",
+          "responseStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "kind": "calendar#event",
+      "etag": "\"event_etag_5\"",
+      "id": "google_event_5",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=example5",
+      "created": "2024-01-14T14:00:00.000Z",
+      "updated": "2024-01-14T14:00:00.000Z",
+      "summary": "Code Review Session",
+      "description": "Review recent pull requests and discuss architecture changes",
+      "location": "Development Lab",
+      "creator": {
+        "email": "tech.lead@company.com",
+        "displayName": "Tech Lead"
+      },
+      "organizer": {
+        "email": "tech.lead@company.com",
+        "displayName": "Tech Lead"
+      },
+      "start": {
+        "dateTime": "2024-01-15T16:30:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "end": {
+        "dateTime": "2024-01-15T17:30:00-05:00",
+        "timeZone": "America/New_York"
+      },
+      "attendees": [
+        {
+          "email": "senior.dev1@company.com",
+          "displayName": "Senior Developer 1",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "senior.dev2@company.com",
+          "displayName": "Senior Developer 2",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "junior.dev@company.com",
+          "displayName": "Junior Developer",
+          "responseStatus": "accepted"
+        }
+      ]
+    }
+  ]
+}
