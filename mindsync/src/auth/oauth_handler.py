@@ -80,51 +80,51 @@ class GoogleOAuthHandler:
         
         return None
     
-def get_auth_url(self) -> Optional[str]:
-        """Generate OAuth authorization URL"""
-        try:
-            # Check if running on Streamlit Cloud or locally
-            if hasattr(st, 'secrets') and 'google_oauth' in st.secrets:
-                # Streamlit Cloud - use secrets directly
-                oauth_config = {
-                    "web": {
-                        "client_id": st.secrets.google_oauth.client_id,
-                        "client_secret": st.secrets.google_oauth.client_secret,
-                        "auth_uri": st.secrets.google_oauth.auth_uri,
-                        "token_uri": st.secrets.google_oauth.token_uri,
-                        "auth_provider_x509_cert_url": st.secrets.google_oauth.auth_provider_x509_cert_url,
-                        "redirect_uris": [st.secrets.google_oauth.redirect_uri]
+    def get_auth_url(self) -> Optional[str]:
+            """Generate OAuth authorization URL"""
+            try:
+                # Check if running on Streamlit Cloud or locally
+                if hasattr(st, 'secrets') and 'google_oauth' in st.secrets:
+                    # Streamlit Cloud - use secrets directly
+                    oauth_config = {
+                        "web": {
+                            "client_id": st.secrets.google_oauth.client_id,
+                            "client_secret": st.secrets.google_oauth.client_secret,
+                            "auth_uri": st.secrets.google_oauth.auth_uri,
+                            "token_uri": st.secrets.google_oauth.token_uri,
+                            "auth_provider_x509_cert_url": st.secrets.google_oauth.auth_provider_x509_cert_url,
+                            "redirect_uris": [st.secrets.google_oauth.redirect_uri]
+                        }
                     }
-                }
-                from google_auth_oauthlib.flow import Flow
-                flow = Flow.from_client_config(oauth_config, scopes=self.scopes)
-                flow.redirect_uri = st.secrets.google_oauth.redirect_uri
-            else:
-                # Local development - use credentials file
-                if not os.path.exists(CREDENTIALS_FILE):
-                    st.error("credentials.json file not found. Please add it to your project root.")
-                    return None
+                    from google_auth_oauthlib.flow import Flow
+                    flow = Flow.from_client_config(oauth_config, scopes=self.scopes)
+                    flow.redirect_uri = st.secrets.google_oauth.redirect_uri
+                else:
+                    # Local development - use credentials file
+                    if not os.path.exists(CREDENTIALS_FILE):
+                        st.error("credentials.json file not found. Please add it to your project root.")
+                        return None
+                    
+                    flow = InstalledAppFlow.from_client_secrets_file(
+                        CREDENTIALS_FILE, 
+                        scopes=self.scopes
+                    )
                 
-                flow = InstalledAppFlow.from_client_secrets_file(
-                    CREDENTIALS_FILE, 
-                    scopes=self.scopes
+                # Generate authorization URL
+                auth_url, _ = flow.authorization_url(
+                    access_type='offline',
+                    include_granted_scopes='true',
+                    prompt='consent'
                 )
-            
-            # Generate authorization URL
-            auth_url, _ = flow.authorization_url(
-                access_type='offline',
-                include_granted_scopes='true',
-                prompt='consent'
-            )
-            
-            # Store flow in session for later use
-            st.session_state.oauth_flow = flow
-            
-            return auth_url
-            
-        except Exception as e:
-            st.error(f"Error generating auth URL: {e}")
-            return None
+                
+                # Store flow in session for later use
+                st.session_state.oauth_flow = flow
+                
+                return auth_url
+                
+            except Exception as e:
+                st.error(f"Error generating auth URL: {e}")
+                return None
     
     def handle_manual_auth_code(self, authorization_code: str) -> bool:
         """Handle manual authorization code entry"""
@@ -241,3 +241,4 @@ def get_auth_url(self) -> Optional[str]:
                 # Don't show error for file operations in production
 
                 pass
+
